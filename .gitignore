@@ -4,3 +4,5 @@ venv/
 *.pyc
 newsletter_lambda.zip
 package/
+lambda_function.zip
+layer_dependencies.zip

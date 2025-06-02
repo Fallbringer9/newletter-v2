@@ -1,24 +1,27 @@
+import openai
 import os
-from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
-
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def get_weekly_news():
     try:
-        response = client.chat.completions.create(
+        print("📥 Récupération de l’actualité…")
+        response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "Tu es un assistant qui résume les actus tech et cloud de la semaine."},
-                {"role": "user", "content": "Peux-tu me donner un résumé court des 5 actus tech et cloud les plus importantes de cette semaine ?"}
+                {"role": "system", "content": "Tu es un assistant expert en technologie et cloud."},
+                {"role": "user", "content": "Donne-moi un résumé concis, structuré et engageant des actualités tech, cloud, IA et dev de la semaine."}
             ],
-            temperature=0.7,
-            max_tokens=800
+            temperature=0.7
         )
-        return response.choices[0].message.content
+
+        content = response["choices"][0]["message"]["content"]
+        return content
+
     except Exception as e:
-        print("Erreur lors de l'appel à l'API OpenAI :", e)
+        print("❌ Erreur lors de l'appel à l'API OpenAI :", e)
         return None
+
 
