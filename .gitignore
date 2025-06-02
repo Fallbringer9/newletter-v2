@@ -1,0 +1,6 @@
+.env
+__pycache__/
+venv/
+*.pyc
+newsletter_lambda.zip
+package/
