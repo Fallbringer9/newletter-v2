@@ -27,5 +27,5 @@ Ce projet génère automatiquement une newsletter hebdomadaire à l'aide de l'AP
 - L’accès SNS est autorisé via une **policy IAM dédiée**.
 - L’invocation Lambda via EventBridge est restreinte par une **resource-based policy**.
 
-## Structure
+
 
